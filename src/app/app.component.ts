@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from './data.service';
+import { AgGridAngular } from 'ag-grid-angular';
 
 
 @Component({
@@ -8,6 +9,8 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  @ViewChild('agGrid') agGrid: AgGridAngular;
 
   columnDefs = [
     { field: 'make', sortable: true, filter: true,checkboxSelection: true },
@@ -26,5 +29,13 @@ ngOnInit() {
     this.rowData=res;
   })
 
+}
+
+getSelectedRows() {
+  const selectedNodes = this.agGrid.api.getSelectedNodes();
+  const selectedData = selectedNodes.map(node => node.data );
+  const selectedDataStringPresentation = selectedData.map(node => `${node.make} ${node.model}`).join(', ');
+
+  alert(`Selected nodes: ${selectedDataStringPresentation}`);
 }
 }
