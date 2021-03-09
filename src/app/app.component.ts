@@ -2,6 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from './data.service';
 import { AgGridAngular } from 'ag-grid-angular';
 
+import { AllCommunityModules } from '@ag-grid-community/all-modules';
+import '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
+import '@ag-grid-community/all-modules/dist/styles/ag-theme-alpine.css';
+
 
 @Component({
   selector: 'app-root',
