@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
   columnDefs = [
     { field: 'make', sortable: true, filter: true,checkboxSelection: true },
     { field: 'model', sortable: true, filter: true },
-    { field: 'price', sortable: true, filter: true }
+    { field: 'price', sortable: true, filter: true },
+    
 ];
 
 rowData=[];
@@ -38,7 +39,7 @@ ngOnInit() {
 getSelectedRows() {
   const selectedNodes = this.agGrid.api.getSelectedNodes();
   const selectedData = selectedNodes.map(node => node.data );
-  const selectedDataStringPresentation = selectedData.map(node => `${node.make} ${node.model}`).join(', ');
+  const selectedDataStringPresentation = selectedData.map(node => `${node.make} ${node.model} ${node.price}`).join(', ');
 
   alert(`Selected nodes: ${selectedDataStringPresentation}`);
 }
